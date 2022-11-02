@@ -1,0 +1,48 @@
+/* RESER */
+* {
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+img {
+    max-width: 100%;
+}
+/* UTILITIES */
+.container {
+    max-width: 1200px;
+}
+.flex {
+    display: flex;
+}
+.between {
+    justify-content: space-between;
+}
+.hidden {
+    display:none;
+}
+.translate {
+    transform: translateX(-50%);
+    transform: translateY(-50%);
+}
+
+/* FLOAT */
+.clear-fix {
+    content:"";
+    display: table;
+    clear: both;
+    margin: auto;
+}
+/* COLORS */
+.bgprimary-custom {
+    background-color:rgb(100, 100, 255);
+}
+.bgprussianblue {
+    background-color: rgb(0,49,83);
+}
+.prussianblue {
+    color: rgb(0,49,83);
+}
