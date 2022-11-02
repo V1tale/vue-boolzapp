@@ -1,3 +1,6 @@
+:root {
+    --bg-one: #eaeaea;
+}
 body {
     background-color: #009688;
 }
@@ -25,18 +28,20 @@ body {
 }
 /* AVATAR */
 .avatar{
-    width:50px;
-    height:50px;
+
     padding: 5px;
     font-size: .8rem;
+    align-items: center;
 }
 img {
+    width:50px;
+    height:50px;
     border-radius: 50%;
     margin-right: 10px;
 }
 .side-top {
     justify-content: space-between;
-    background-color: #eaeaea;
+    background-color:var(--bg-one);
     align-items: flex-start;
 }
 .icons ul {
@@ -65,6 +70,7 @@ img {
     line-height: 40px;
     text-align: center;
     color: #8edafc;
+    flex-shrink: 0;
 }
 .not-text h3{
     font: 1.2rem;
@@ -73,6 +79,21 @@ img {
     font-size: 1rem;
     text-decoration: underline;
     opacity: 50%;
+}
+/* NAV */
+nav {
+    background-color: var(--bg-one);
+    padding:3px;
+}
+nav * {
+    padding:.3rem;
+    border:0px;
+    background-color: white;
+}
+nav input {
+    width: 100%;
+    font-size: 1rem;
+    margin-left:1px;
 }
 /* MAIN CONTENT */
 #main-content {
