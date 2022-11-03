@@ -82,14 +82,16 @@
                 <!-- TEXT AREA -->
                 <div class="text-area">
                 <ul>
-                    <li  v-for="texts in contacts[currentContact].messages" :class="texts.status === 'sent' ? 'sent' : 'received'">{{texts.message}}</li>
+                    <li v-for="texts in contacts[currentContact].messages">
+                        <div :class="texts.status === 'sent' ? 'sent' : 'received'" class="box"><p>{{texts.message}}</p><small>{{texts.date.substring(10,16)}}</small></div>
+                    </li>
                 </ul">
                 </div>
                 <!-- /TEXT AREA -->
                 <!-- MAIN BOTTOM -->
                 <div class="mainbottom flex">
                     <i class="fa-regular fa-face-smile"></i>
-                    <input type="text" placeholder="Scrivi un messaggio">
+                    <input v-model="newMessage" v-on:keyup.enter="sendMessage(index)" type="text" placeholder="Scrivi un messaggio">
                     <i class="fa-solid fa-microphone"></i>
                 </div>
                 <!-- /MAIN BOTTOM -->

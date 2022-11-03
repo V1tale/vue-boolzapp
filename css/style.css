@@ -34,8 +34,10 @@ transform:translateY(-5vh);
 /* SIDEBAR */
 #sidebar {
     width:30%;
-    height:100%;
-    overflow-y: scroll;
+    overflow-y: auto;
+}
+#sidebar ul {
+    
 }
 /* AVATAR */
 .avatar{
@@ -144,17 +146,16 @@ nav input {
     border: 0;
     padding: .4rem;
 }
-.text-area li {
-    max-width: 50%;
+.box {
+    max-width: 40%;
     padding:1.2rem;
     border-radius: 10px;
     margin:2rem;
 }
 .sent {
     position:relative;
-    left:50%; 
+    left: 50%; 
     top: 0;
-    transform:translateX(-10%);
     background-color: #d5f9ba;
 
 
