@@ -82,7 +82,7 @@
                 <!-- TEXT AREA -->
                 <div class="text-area">
                 <ul>
-                    <li class="sent"v-for="texts in contacts[currentContact].messages">{{texts.message}}</li>
+                    <li  v-for="texts in contacts[currentContact].messages" :class="texts.status === 'sent' ? 'sent' : 'received'">{{texts.message}}</li>
                 </ul">
                 </div>
                 <!-- /TEXT AREA -->
