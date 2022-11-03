@@ -4,12 +4,22 @@
 body {
     background-color: #009688;
 }
+ul {
+    list-style: none;
+}
 .wrapper {
-    position:relative;
-    top:10vh;
     height: 90vh;
     width: 100%;
     background-color: #dadbd4;
+    transform:translateY(10vh);
+}
+i {
+    opacity:50%;
+}
+i:hover {
+    opacity:100%;
+    color:#6d8fff;
+    cursor: pointer;
 }
 .container {
     width:80%;
@@ -18,13 +28,14 @@ body {
 #webapp {
     width:100%;
     height:90vh;
-    background-color: black;
+transform:translateY(-5vh);
+
 }
 /* SIDEBAR */
 #sidebar {
     width:30%;
     height:100%;
-    background-color: rgb(17, 0, 255); 
+    overflow-y: scroll;
 }
 /* AVATAR */
 .avatar{
@@ -39,7 +50,7 @@ img {
     border-radius: 50%;
     margin-right: 10px;
 }
-.side-top {
+.side-top, .main-top {
     justify-content: space-between;
     background-color:var(--bg-one);
     align-items: flex-start;
@@ -47,8 +58,6 @@ img {
 .icons ul {
     display:flex;
     font-size: 1.4rem;
-    opacity:50%;
-    list-style: none;
     padding-right: 10px;
 }
 .icons li {
@@ -95,9 +104,46 @@ nav input {
     font-size: 1rem;
     margin-left:1px;
 }
+/* CONTACTS */
+#contacts {
+    background-color: white;
+}
+#contacts .card {
+    padding: 5px;
+    border-top:1px solid gray;
+
+}
+#contacts li :hover {
+    background-color: #ddf0f8;
+    cursor:pointer;
+}
+.contact-info {
+    line-height: 50px;
+}
 /* MAIN CONTENT */
 #main-content {
     width:70%;
-    height:100%;;
     background-color: rgb(255, 0, 0); 
+    position:relative;
+
+}
+
+.mainbottom {
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    background-color: var(--bg-one);
+    font-size: 1.8rem;
+    align-items: center;
+    justify-content: space-around;
+    padding: .5rem 0;
+}
+.mainbottom input {
+    width:80%;
+    border: 0;
+    padding: .4rem;
+}
+.text-area {
+    overflow-y: scroll;
 }
