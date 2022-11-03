@@ -166,7 +166,12 @@ createApp({
             }
         ],
     }
-]
-}
+    ]
+    }
+    },
+    methods: {
+    moveIndex(index) {
+        this.currentContact = index
+    }
 }
 }).mount("#app")

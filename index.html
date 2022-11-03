@@ -55,7 +55,7 @@
                 <!-- CONTACTS LIST -->
                 <div id="contacts">
                     <ul>
-                        <li v-for="(contact,index) in contacts"><div class="card flex"><img :src=' "img/avatar" + contact.avatar + ".jpg"' alt=""><div class="contact-info"><h2>{{contact.name}}</h2></div></div></li>
+                        <li  v-for="(contact,index) in contacts" @click="moveIndex(index)"><div class="card flex"><img :src=' "img/avatar" + contact.avatar + ".jpg"' alt=""><div class="contact-info"><h2>{{contact.name}}</h2></div></div></li>
                     </ul>
                 </div>
                 <!-- /CONTACTS LIST -->
