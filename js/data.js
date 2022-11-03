@@ -218,6 +218,15 @@ createApp({
         }
     )
     this.newMessage = null;
+    setTimeout(() => {
+        this.contacts[this.currentContact].messages.push(
+            {
+                date: '38383847',
+                message:'ok',
+                status:'received',
+            }
+        )
+    },1000)
     }
 }
 }).mount("#app")

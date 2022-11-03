@@ -127,6 +127,7 @@ nav input {
     width:70%;
     position:relative;
     background-color: #7e7d7d;
+    overflow-y: scroll;
 
 }
 
