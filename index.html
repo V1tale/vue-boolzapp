@@ -16,85 +16,87 @@
 <body>
     <div id="app">
         <div class="wrapper">
-<div class="container">
-    <div id="webapp" class="flex">
-        <!-- SIDEBAR -->
-        <div id="sidebar">
-            <!-- SIDE TOP -->
-            <div class="side-top flex">
-                <div class="avatar flex">
-                    <img src="img/avatar.jpg" alt="">
-                    <h2>Homer J. Simpson</h2>
+            <div class="container">
+        <div id="webapp" class="flex">
+            <!-- SIDEBAR -->
+            <div id="sidebar">
+                <!-- SIDE TOP -->
+                <div class="side-top flex">
+                    <div class="avatar flex">
+                        <img src="img/avatar.jpg" alt="">
+                        <h2>Homer J. Simpson</h2>
+                    </div>
+                    <div class="icons">
+                        <ul>                   
+                            <li><i class="fa-solid fa-circle-notch"></i></li>
+                            <li><i class="fa-solid fa-message"></i></li>
+                            <li><i class="fa-solid fa-ellipsis-vertical"></i></li>
+                        </ul>                   
+                    </div>
                 </div>
-                <div class="icons">
-                    <ul>                   
-                        <li><i class="fa-solid fa-circle-notch"></i></li>
-                        <li><i class="fa-solid fa-message"></i></li>
-                        <li><i class="fa-solid fa-ellipsis-vertical"></i></li>
-                    </ul>                   
+                <!-- /SIDE TOP -->
+                <!-- NOTIFICATION & NAV -->
+                <div id="notification" class="flex">
+                    <div class="bell-icon">
+                        <i class="fa-solid fa-bell-slash"></i>
+                    </div>
+                    <div class="not-text">
+                        <h3>Ricevi notifiche nuovi messaggi</h3>
+                        <h4>Attiva notifiche Desktop</h4>
+                    </div>
                 </div>
+                <nav class="flex">
+                    <div class="search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                </nav>
+                <!-- /NOTIFICATION & NAV -->
+                <!-- CONTACTS LIST -->
+                <div id="contacts">
+                    <ul>
+                        <li v-for="(contact,index) in contacts"><div class="card flex"><img :src=' "img/avatar" + contact.avatar + ".jpg"' alt=""><div class="contact-info"><h2>{{contact.name}}</h2></div></div></li>
+                    </ul>
+                </div>
+                <!-- /CONTACTS LIST -->
+
             </div>
-            <!-- /SIDE TOP -->
-            <!-- NOTIFICATION & NAV -->
-            <div id="notification" class="flex">
-                <div class="bell-icon">
-                    <i class="fa-solid fa-bell-slash"></i>
+            <!-- /SIDEBAR -->
+            <!-- MAIN CONTENT -->
+            <!-- MAIN TOP -->
+            <div id="main-content">
+                <div class="main-top flex">
+                    <div class="avatar flex">
+                        <img :src="`img/avatar${contacts[currentContact].avatar}.jpg`" alt="">
+                        <h2>{{contacts[currentContact].name}}</h2>
+                    </div>
+                    <div class="icons">
+                        <ul>                   
+                            <li><i class="fa-solid fa-magnifying-glass"></i></li>
+                            <li><i class="fa-solid fa-paperclip"></i></li>
+                            <li><i class="fa-solid fa-ellipsis-vertical"></i></li>
+                        </ul>                   
+                    </div>
                 </div>
-                <div class="not-text">
-                    <h3>Ricevi notifiche nuovi messaggi</h3>
-                    <h4>Attiva notifiche Desktop</h4>
-                </div>
-            </div>
-            <nav class="flex">
-                <div class="search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                <input type="text" placeholder="Cerca o inizia una nuova chat">
-            </nav>
-            <!-- /NOTIFICATION & NAV -->
-            <!-- CONTACTS LIST -->
-            <div id="contacts">
+                <!-- /MAIN TOP -->
+                <!-- TEXT AREA -->
+                <div class="text-area">
                 <ul>
-                    <li v-for="(contact, index) in contacts"><div class="card flex"><img :src=' "img/avatar" + contact.avatar + ".jpg"' alt=""><div class="contact-info"><h2>{{contact.name}}</h2></div></div></li>
-                </ul>
+                    <li class="sent"v-for="texts in contacts[currentContact].messages">{{texts.message}}</li>
+                </ul">
+                </div>
+                <!-- /TEXT AREA -->
+                <!-- MAIN BOTTOM -->
+                <div class="mainbottom flex">
+                    <i class="fa-regular fa-face-smile"></i>
+                    <input type="text" placeholder="Scrivi un messaggio">
+                    <i class="fa-solid fa-microphone"></i>
+                </div>
+                <!-- /MAIN BOTTOM -->
             </div>
-            <!-- /CONTACTS LIST -->
+            <!-- /MAIN CONTENT -->
 
         </div>
-        <!-- /SIDEBAR -->
-        <!-- MAIN CONTENT -->
-        <!-- MAIN TOP -->
-        <div id="main-content">
-            <div class="main-top flex">
-                <div class="avatar flex">
-                    <img src="img/avatar.jpg" alt="">
-                    <h2>Homer J. Simpson</h2>
-                </div>
-                <div class="icons">
-                    <ul>                   
-                        <li><i class="fa-solid fa-magnifying-glass"></i></li>
-                        <li><i class="fa-solid fa-paperclip"></i></li>
-                        <li><i class="fa-solid fa-ellipsis-vertical"></i></li>
-                    </ul>                   
-                </div>
-            </div>
-            <!-- /MAIN TOP -->
-            <!-- BODY -->
-            <div class="text-area">
-
-            </div>
-            <!-- /BODY -->
-            <!-- MAIN BOTTOM -->
-            <div class="mainbottom flex">
-                <i class="fa-regular fa-face-smile"></i>
-                <input type="text" placeholder="Scrivi un messaggio">
-                <i class="fa-solid fa-microphone"></i>
-            </div>
-            <!-- /MAIN BOTTOM -->
-        </div>
-        <!-- /MAIN CONTENT -->
-
-    </div>
     
 </div>
         </div>
