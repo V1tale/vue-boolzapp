@@ -130,6 +130,9 @@ nav input {
 .contact-info small {
     font-size: 1rem;
 }
+.card {
+    justify-content: space-between;
+}
 .card small {
     align-self: center;
 }

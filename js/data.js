@@ -1,5 +1,6 @@
 const {createApp} = Vue;
 const time = luxon.DateTime;
+let searchContact = "";
 createApp({
     data(){
         return {
@@ -204,7 +205,6 @@ createApp({
     ]
     }
     },
-      
     methods: {
     moveIndex(index) {
         this.currentContact = index
@@ -233,5 +233,20 @@ createApp({
         return time
           .now().setLocale("it").toLocaleString(time.DATETIME_SHORT_WITH_SECONDS);
       },
+    
+    filter() {
+        console.log("funziona");
+    for (let i = 0; i < this.contacts.length; i++) {
+    const checkName = this.contacts[i].name.toLowerCase();
+    console.log(checkName);
+        if(checkName.toLowerCase().includes(this.searchContact.toLowerCase())) {
+        visible = true
+        } else {
+        visible = false
+        this.hideElement()
+        }
+        console.log(visible);
+    }
+    },
 }
 }).mount("#app")
