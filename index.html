@@ -9,6 +9,8 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- LUXON -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.3/build/global/luxon.min.js"></script>
     <!-- FRAMEWORK -->
     <link rel="stylesheet" href="css/utility-framework.css">
     <!-- STYLE -->
@@ -17,90 +19,93 @@
     <div id="app">
         <div class="wrapper">
             <div class="container">
-        <div id="webapp" class="flex">
-            <!-- SIDEBAR -->
-            <div id="sidebar">
-                <!-- SIDE TOP -->
-                <div class="side-top flex">
-                    <div class="avatar flex">
-                        <img src="img/avatar.jpg" alt="">
-                        <h2>Homer J. Simpson</h2>
-                    </div>
-                    <div class="icons">
-                        <ul>                   
-                            <li><i class="fa-solid fa-circle-notch"></i></li>
-                            <li><i class="fa-solid fa-message"></i></li>
-                            <li><i class="fa-solid fa-ellipsis-vertical"></i></li>
-                        </ul>                   
-                    </div>
-                </div>
-                <!-- /SIDE TOP -->
-                <!-- NOTIFICATION & NAV -->
-                <div id="notification" class="flex">
-                    <div class="bell-icon">
-                        <i class="fa-solid fa-bell-slash"></i>
-                    </div>
-                    <div class="not-text">
-                        <h3>Ricevi notifiche nuovi messaggi</h3>
-                        <h4>Attiva notifiche Desktop</h4>
-                    </div>
-                </div>
-                <nav class="flex">
-                    <div class="search">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
-                    <input type="text" placeholder="Cerca o inizia una nuova chat">
-                </nav>
-                <!-- /NOTIFICATION & NAV -->
-                <!-- CONTACTS LIST -->
-                <div id="contacts">
-                    <ul>
-                        <li  v-for="(contact,index) in contacts" @click="moveIndex(index)"><div class="card flex"><img :src=' "img/avatar" + contact.avatar + ".jpg"' alt=""><div class="contact-info"><h2>{{contact.name}}</h2></div></div></li>
-                    </ul>
-                </div>
-                <!-- /CONTACTS LIST -->
+                <div id="webapp" class="flex">
+                    <!-- SIDEBAR -->
+                    <div id="sidebar">
+                        <!-- SIDE TOP -->
+                        <div class="side-top flex">
+                            <div class="avatar flex">
+                                <img src="img/avatar.jpg" alt="">
+                                <h2>Homer J. Simpson</h2>
+                            </div>
+                            <div class="icons">
+                                <ul>                   
+                                    <li><i class="fa-solid fa-circle-notch"></i></li>
+                                    <li><i class="fa-solid fa-message"></i></li>
+                                    <li><i class="fa-solid fa-ellipsis-vertical"></i></li>
+                                </ul>                   
+                            </div>
+                        </div>
+                        <!-- /SIDE TOP -->
+                        <!-- NOTIFICATION & NAV -->
+                        <div id="notification" class="flex">
+                            <div class="bell-icon">
+                                <i class="fa-solid fa-bell-slash"></i>
+                            </div>
+                            <div class="not-text">
+                                <h3>Ricevi notifiche nuovi messaggi</h3>
+                                <h4>Attiva notifiche Desktop</h4>
+                            </div>
+                        </div>
+                        <nav class="flex">
+                            <div class="search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                            <input type="text" placeholder="Cerca o inizia una nuova chat">
+                        </nav>
+                        <!-- /NOTIFICATION & NAV -->
+                        <!-- CONTACTS LIST -->
+                        <div id="contacts">
+                            <ul>
+                                <li  v-for="(contact,index) in contacts" @click="moveIndex(index)"><div class="card flex"><img :src=' "img/avatar" + contact.avatar + ".jpg"' alt=""><div class="contact-info"><h2>{{contact.name}}</h2> <small>Ultimo messaggio</small></div><small>12:00</small></div></li>
+                            </ul>
+                        </div>
+                        <!-- /CONTACTS LIST -->
 
-            </div>
-            <!-- /SIDEBAR -->
-            <!-- MAIN CONTENT -->
-            <!-- MAIN TOP -->
-            <div id="main-content">
-                <div class="main-top flex">
-                    <div class="avatar flex">
-                        <img :src="`img/avatar${contacts[currentContact].avatar}.jpg`" alt="">
-                        <h2>{{contacts[currentContact].name}}</h2><small>Online</small>
                     </div>
-                    <div class="icons">
-                        <ul>                   
-                            <li><i class="fa-solid fa-magnifying-glass"></i></li>
-                            <li><i class="fa-solid fa-paperclip"></i></li>
-                            <li><i class="fa-solid fa-ellipsis-vertical"></i></li>
-                        </ul>                   
+                    <!-- /SIDEBAR -->
+                    <!-- MAIN CONTENT -->
+                    <!-- MAIN TOP -->
+                    <div id="main-content">
+                        <div class="main-top flex">
+                            <div class="avatar flex">
+                                <img :src="`img/avatar${contacts[currentContact].avatar}.jpg`" alt="">
+                                <div class="info-contact">
+                                    <h2>{{contacts[currentContact].name}}</h2>
+                                    <small>Online</small>
+                                </div>
+                            </div>
+                            <div class="icons">
+                                <ul>                   
+                                    <li><i class="fa-solid fa-magnifying-glass"></i></li>
+                                    <li><i class="fa-solid fa-paperclip"></i></li>
+                                    <li><i class="fa-solid fa-ellipsis-vertical"></i></li>
+                                </ul>                   
+                            </div>
+                        </div>
+                        <!-- /MAIN TOP -->
+                        <!-- TEXT AREA -->
+                        <div class="text-area">
+                        <ul>
+                            <li v-for="texts in contacts[currentContact].messages">
+                                <div :class="texts.status === 'sent' ? 'sent' : 'received'" class="box"><p>{{texts.message}}</p><small>{{texts.date.substring(10,16)}}</small></div>
+                            </li>
+                        </ul">
+                        </div>
+                        <!-- /TEXT AREA -->
+                        <!-- MAIN BOTTOM -->
+                        <div class="mainbottom flex">
+                            <i class="fa-regular fa-face-smile"></i>
+                            <input v-model.trim="newMessage" @keyup.enter="sendMessage(index)" type="text" placeholder="Scrivi un messaggio">
+                            <i class="fa-solid fa-microphone"></i>
+                        </div>
+                        <!-- /MAIN BOTTOM -->
                     </div>
-                </div>
-                <!-- /MAIN TOP -->
-                <!-- TEXT AREA -->
-                <div class="text-area">
-                <ul>
-                    <li v-for="texts in contacts[currentContact].messages">
-                        <div :class="texts.status === 'sent' ? 'sent' : 'received'" class="box"><p>{{texts.message}}</p><small>{{texts.date.substring(10,16)}}</small></div>
-                    </li>
-                </ul">
-                </div>
-                <!-- /TEXT AREA -->
-                <!-- MAIN BOTTOM -->
-                <div class="mainbottom flex">
-                    <i class="fa-regular fa-face-smile"></i>
-                    <input v-model="newMessage" v-on:keyup.enter="sendMessage(index)" type="text" placeholder="Scrivi un messaggio">
-                    <i class="fa-solid fa-microphone"></i>
-                </div>
-                <!-- /MAIN BOTTOM -->
-            </div>
-            <!-- /MAIN CONTENT -->
+                    <!-- /MAIN CONTENT -->
 
-        </div>
+                </div>
     
-</div>
+            </div>
         </div>
     </div>
     <script src="js/data.js"></script>

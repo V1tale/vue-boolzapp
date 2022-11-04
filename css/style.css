@@ -125,7 +125,13 @@ nav input {
     cursor:pointer;
 }
 .contact-info {
-    line-height: 50px;
+    line-height: 20px;
+}
+.contact-info small {
+    font-size: 1rem;
+}
+.card small {
+    align-self: center;
 }
 /* MAIN CONTENT */
 #main-content {
@@ -138,12 +144,13 @@ nav input {
     opacity: 0.5;
 }
 .text-area {
-    background-color: #7e7d7d;
+    background-image: url(../img/mine.jpg);
     overflow-y: auto;
     height:80vh;
 }
 .box {
     position:relative;
+    font-size: 1.2rem;
 }
 .text-area small {
     position: absolute;

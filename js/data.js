@@ -1,5 +1,5 @@
 const {createApp} = Vue;
-
+const time = luxon.DateTime;
 createApp({
     data(){
         return {
@@ -98,7 +98,7 @@ createApp({
             },
             {
                 date: '10/01/2020 15:54:30',
-                message: 'MA figurati. Starà tutto il giorno in giardino a piantare stupidi fagioli',
+                message: 'Ma figurati. Starà tutto il giorno in giardino a piantare stupidi fagioli',
                 status: 'sent'
             }
         ],
@@ -204,15 +204,16 @@ createApp({
     ]
     }
     },
-    
+      
     methods: {
     moveIndex(index) {
         this.currentContact = index
     },
     sendMessage: function() {
+        if (this.newMessage != "") {
     this.contacts[this.currentContact].messages.push(
         {
-            date: '38383847',
+            date: this.timeGenerator(),
             message:this.newMessage,
             status:'sent',
         }
@@ -221,12 +222,16 @@ createApp({
     setTimeout(() => {
         this.contacts[this.currentContact].messages.push(
             {
-                date: '38383847',
+                date: this.timeGenerator(),
                 message:'ok',
                 status:'received',
             }
         )
-    },1000)
-    }
+        },1000)
+    }},
+    timeGenerator() {
+        return time
+          .now().setLocale("it").toLocaleString(time.DATETIME_SHORT_WITH_SECONDS);
+      },
 }
 }).mount("#app")
